@@ -2,43 +2,31 @@ Package: mimosa
 Type: Package
 Title: 'MIMoSA': A Method for Inter-Modal Segmentation Analysis
 Version: 0.5.8.1
-Authors@R: c(person("Alessandra", "Valcarcel", role = c("aut", "cre"), email =
-    "alval@pennmedicine.upenn.edu"))
+Authors@R: c(person("Alessandra", "Valcarcel", role = c("aut", "cre"),
+        email = "alval@pennmedicine.upenn.edu"))
 Maintainer: Alessandra Valcarcel <alval@pennmedicine.upenn.edu>
-Description: Trains and makes predictions from the 'MIMoSA' method. 
-Imports: 
-  ANTsRCore (>= 0.3.4),
-  ANTsR,
-  dplyr,
-  extrantsr (>= 3.1),
-  fslr (>= 2.24.1),
-  neurobase (>= 1.27.11),
-  oasis (>= 3.0.1),
-  parallel (>= 2.14.0),
-  rlist (>= 0.4.5),
-  stats,
-  utils (>= 3.2.5),
-  WhiteStripe (>= 2.3.1)
+Description: Trains and makes predictions from the 'MIMoSA' method.
+Imports: ANTsRCore (>= 0.3.4), ANTsR, dplyr, extrantsr (>= 3.1), fslr
+        (>= 2.24.1), neurobase (>= 1.27.11), oasis (>= 3.0.1), parallel
+        (>= 2.14.0), rlist (>= 0.4.5), stats, utils (>= 3.2.5),
+        WhiteStripe (>= 2.3.1)
 License: GPL-2
 LazyData: TRUE
 RoxygenNote: 7.3.2
 Encoding: UTF-8
-Remotes: 
-  neuroconductor/ANTsR@bb8aeacac74c9969fe0693cffb82291ba192fe31,
-  neuroconductor/ANTsRCore@55d658eb9f3e265a3dd11aea0d423d876cb2794c,
-  neuroconductor/extrantsr@eb3e9ab6e4a081ef9134ae2b47260817f44b2834,
-  jonclayden/mmand,
-  neuroconductor/neurobase@69edde6d85b13cf182ed5990e6c4166795128977,
-  neuroconductor/oro.nifti@c8832b410ec2ccd86b23e23db79d8d0291fecb2a,
-  muschellij2/WhiteStripe
 Packaged: 2017-08-24 17:32:43 UTC; alval
 URL: https://github.com/avalcarcel9/mimosa
 BugReports: https://github.com/avalcarcel9/mimosa/issues
-Suggests:
-  covr,
-  knitr,
-  rmarkdown,
-  spelling, 
-  testthat
+Suggests: covr, knitr, rmarkdown, spelling, testthat
 VignetteBuilder: knitr
 Language: en-US
+Repository: Neuroconductor-Devel
+Remotes:  
+    neuroconductor-devel/ANTsRCore@961f3b3a8b58f1d317f6f622951beeeb707749ed,
+    neuroconductor-devel/ANTsR@85802eaea97beee48ef757be5ce64028f5bbe965,
+    neuroconductor-devel/neurobase@bed9014475564a8aaf3ddfcb64f3b8439383b99d,
+    neuroconductor-devel/WhiteStripe@141fe20e179df01fc0b442081822d56047d2cc54,
+    neuroconductor-devel/fslr@22c50545a095a3a02deec976b23fa6a349e717ac,
+    neuroconductor-devel/extrantsr@25077d6f04d8e3739c63020d8342b5eff11bccca,
+    neuroconductor-devel/oasis@0adb74a5abae62ad0c6456088d0db318308ce57f
+biocViews: 
