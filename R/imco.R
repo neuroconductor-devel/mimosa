@@ -14,7 +14,7 @@
 #' @param retimg If TRUE, return list of estimated coupling maps as nifti objects
 #' @param outDir Full path to directory where maps should be written
 #' @param propMiss Maximum proportion of missing voxels in a neighborhood to tolerate, i.e., return NA if missing more than propMiss in the neighborhood of the center voxel
-#' @importFrom ANTsRCore antsGetSpacing getNeighborhoodInMask
+#' @importFrom ANTsR antsGetSpacing getNeighborhoodInMask
 #' @importFrom extrantsr check_ants 
 #' @importFrom stats qnorm
 #' @return Estimated IMCo coupling maps, either written to files and/or returned as nifti objects
@@ -33,12 +33,12 @@ imco <- function(files, brainMask, subMask=NULL, type="pca", ref=1, fwhm=3,
         if(!all(dim(fileList[[i-1]])==dim(fileList[[i]]))){
             stop('Image dimensions do not match')
         }
-        if(!all(ANTsRCore::antsGetSpacing(fileList[[i-1]])==ANTsRCore::antsGetSpacing(fileList[[i]]))){
+        if(!all(ANTsR::antsGetSpacing(fileList[[i-1]])==ANTsR::antsGetSpacing(fileList[[i]]))){
             stop('Voxel dimensions do not match')
         }
     }
     # Dimension of each voxel in mm
-    vDims = ANTsRCore::antsGetSpacing(fileList[[1]])
+    vDims = ANTsR::antsGetSpacing(fileList[[1]])
     # Image dimension
     imgDims = dim(fileList[[1]])
     if(is.null(radius)){
@@ -67,7 +67,7 @@ imco <- function(files, brainMask, subMask=NULL, type="pca", ref=1, fwhm=3,
     if(!all(dim(bMask)==dim(fileList[[1]]))){
         stop('Image dimensions do not match the brain mask')
     }
-    if(!all(ANTsRCore::antsGetSpacing(bMask)==ANTsRCore::antsGetSpacing(fileList[[1]]))){
+    if(!all(ANTsR::antsGetSpacing(bMask)==ANTsR::antsGetSpacing(fileList[[1]]))){
         stop('Voxel dimensions do not match the brain mask')
     }
     # Assign anything outside brain mask to NA
@@ -101,10 +101,10 @@ imco <- function(files, brainMask, subMask=NULL, type="pca", ref=1, fwhm=3,
     if(!is.null(subMask)){
         sMask = extrantsr::check_ants(subMask)
         mask_indices = which(as.array(sMask) > 0)
-        nhoods = lapply(fileList, function(x) ANTsRCore::getNeighborhoodInMask(image=x, mask=sMask, radius=radius, spatial.info=TRUE, boundary.condition='image'))
+        nhoods = lapply(fileList, function(x) ANTsR::getNeighborhoodInMask(image=x, mask=sMask, radius=radius, spatial.info=TRUE, boundary.condition='image'))
     } else{
         mask_indices = which(as.array(bMask) > 0)
-        nhoods = lapply(fileList, function(x) ANTsRCore::getNeighborhoodInMask(image=x, mask=bMask, radius=radius, spatial.info=TRUE))
+        nhoods = lapply(fileList, function(x) ANTsR::getNeighborhoodInMask(image=x, mask=bMask, radius=radius, spatial.info=TRUE))
     }
     # Will use to map back to niftis
     inds = nhoods[[1]]$indices

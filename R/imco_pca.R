@@ -10,7 +10,7 @@
 #' @param retimg If TRUE, return list of estimated coupling maps as nifti objects
 #' @param outDir Full path to directory where maps should be written
 #' @param propMiss Maximum proportion of missing voxels in a neighborhood to tolerate, i.e., return NA if missing more than propMiss in the neighborhood of the center voxel
-#' @importFrom ANTsRCore antsImageWrite
+#' @importFrom ANTsR antsImageWrite
 #' @importFrom extrantsr ants2oro
 #' @importFrom rlist list.rbind
 #' @importFrom stats cov.wt
@@ -78,7 +78,7 @@ imco_pca <- function(files, nhoods, nWts, mask_indices, ref=1, verbose=TRUE, ret
             ))
 		evals[[j]] = make_ants_image(vec=tmp, mask_indices=mask_indices, reference=files[[1]])
 		if(!is.null(outDir)){
-			ANTsRCore::antsImageWrite(evals[[j]], file.path(outDir, paste0('eigenValue-', j, '.nii.gz')))    	
+			ANTsR::antsImageWrite(evals[[j]], file.path(outDir, paste0('eigenValue-', j, '.nii.gz')))    	
 		}
 		components[[j]] = list()
 		for(k in 1:length(files)){
@@ -88,7 +88,7 @@ imco_pca <- function(files, nhoods, nWts, mask_indices, ref=1, verbose=TRUE, ret
 			))
 			components[[j]][[k]] = make_ants_image(vec=tmp, mask_indices=mask_indices, reference=files[[1]])
 			if(!is.null(outDir)){
-				ANTsRCore::antsImageWrite(components[[j]][[k]], file.path(outDir, paste0('component', j, '-', k, '.nii.gz')))    	
+				ANTsR::antsImageWrite(components[[j]][[k]], file.path(outDir, paste0('component', j, '-', k, '.nii.gz')))    	
 			}
 		}
 	}

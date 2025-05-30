@@ -4,7 +4,7 @@
 #' @param vec vector of IMCo values
 #' @param mask_indices voxels where IMCo was computed
 #' @param reference image for header info
-#' @importFrom ANTsRCore as.antsImage
+#' @importFrom ANTsR as.antsImage
 #' @return 3D ANTS image of IMCo measurements
 # @examples \dontrun{
 # 
@@ -12,6 +12,6 @@
 make_ants_image = function(vec, mask_indices, reference){
 	arr = array(0, dim=dim(reference))
 	arr[mask_indices] = vec
-	x = ANTsRCore::as.antsImage(arr, reference=reference)
+	x = ANTsR::as.antsImage(arr, reference=reference)
 	return(x)
 }
